@@ -15,9 +15,9 @@ const routes: Routes = [
       { path: 'basictables', component: BasicTables },
       { path: 'smarttables', component: SmartTables },
       { path: 'datatables', component: DataTables },
-      { path: 'hottables', component: HotTablesComponent }
-    ]
-  }
+      { path: 'hottables', component: HotTablesComponent },
+    ],
+  },
 ];
 
 export const routing = RouterModule.forChild(routes);
