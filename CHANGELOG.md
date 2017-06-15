@@ -1,4 +1,4 @@
-<a name="1.0.0"></a>
+a name="1.0.0"></a>
 # [1.0.0](https://github.com/akveo/ng2-admin/compare/v0.9.0...v1.0.0) (2017-04-27)
 
 

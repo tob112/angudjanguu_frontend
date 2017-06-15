@@ -2,7 +2,7 @@ export const IMAGES_ROOT = 'assets/img/';
 
 export const layoutSizes = {
   resWidthCollapseSidebar: 1200,
-  resWidthHideSidebar: 500
+  resWidthHideSidebar: 500,
 };
 
 export const layoutPaths = {
@@ -10,18 +10,18 @@ export const layoutPaths = {
     root: IMAGES_ROOT,
     profile: IMAGES_ROOT + 'app/profile/',
     amMap: 'assets/img/theme/vendor/ammap/',
-    amChart: 'assets/img/theme/vendor/amcharts/dist/amcharts/images/'
-  }
+    amChart: 'assets/img/theme/vendor/amcharts/dist/amcharts/images/',
+  },
 };
 
 export class colorHelper {
   static shade = (color, weight) => {
     return colorHelper.mix('#000000', color, weight);
-  };
+  }
 
   static tint = (color, weight) => {
     return colorHelper.mix('#ffffff', color, weight);
-  };
+  }
 
   static hexToRgbA = (hex, alpha) => {
     let c;
@@ -34,22 +34,22 @@ export class colorHelper {
       return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + alpha + ')';
     }
     throw new Error('Bad Hex');
-  };
+  }
 
   static mix = (color1, color2, weight) => {
 
-    let d2h = (d) => d.toString(16);
-    let h2d = (h) => parseInt(h, 16);
+    const d2h = (d) => d.toString(16);
+    const h2d = (h) => parseInt(h, 16);
 
-    let result = "#";
+    let result = '#';
     for (let i = 1; i < 7; i += 2) {
-      let color1Part = h2d(color1.substr(i, 2));
-      let color2Part = h2d(color2.substr(i, 2));
-      let resultPart = d2h(Math.floor(color2Part + (color1Part - color2Part) * (weight / 100.0)));
+      const color1Part = h2d(color1.substr(i, 2));
+      const color2Part = h2d(color2.substr(i, 2));
+      const resultPart = d2h(Math.floor(color2Part + (color1Part - color2Part) * (weight / 100.0)));
       result += ('0' + resultPart).slice(-2);
     }
     return result;
-  };
+  }
 }
 
 export const isMobile = () => (/android|webos|iphone|ipad|ipod|blackberry|windows phone/).test(navigator.userAgent.toLowerCase());
