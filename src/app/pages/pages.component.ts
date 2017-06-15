@@ -20,6 +20,7 @@ import { PAGES_MENU } from './pages.menu';
       <!--<div class="al-footer-main clearfix">-->
         <!--<div class="al-copy">&copy; <a href="http://akveo.com" translate>{{'general.akveo'}}</a> 2016</div>-->
         <!--<ul class="al-share clearfix">-->
+      d
           <!--<li><i class="socicon socicon-facebook"></i></li>-->
           <!--<li><i class="socicon socicon-twitter"></i></li>-->
           <!--<li><i class="socicon socicon-google"></i></li>-->
