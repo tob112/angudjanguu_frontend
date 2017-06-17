@@ -18,8 +18,8 @@ export const PAGES_MENU = [
         path: 'admin',
         data: {
           menu: {
-            title: 'Admin Page',
-            icon: 'ion-android-home',
+            title: 'Benutzerverwaltung',
+            icon: 'ion-social-snapchat',
             selected: false,
             expanded: false,
             order: 9999,

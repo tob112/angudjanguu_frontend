@@ -21,7 +21,7 @@ import { SmartTablesService } from './admin.service';
     AdminComponent,
   ],
   providers: [
-    SmartTablesService,
+
   ],
 })
 export class AdminModule {}
