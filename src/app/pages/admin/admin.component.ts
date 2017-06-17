@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { SmartTablesService } from './admin.service';
 import { LocalDataSource } from 'ng2-smart-table';
+import { Restangular } from 'ngx-restangular';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'admin-user-liste',
@@ -9,8 +11,10 @@ import { LocalDataSource } from 'ng2-smart-table';
 })
 export class AdminComponent {
 
-  query: string = '';
 
+  private userList;
+
+  //noinspection ReservedWordAsName
   settings = {
     add: {
       addButtonContent: '<i class="ion-ios-plus-outline"></i>',
@@ -24,42 +28,40 @@ export class AdminComponent {
     },
     delete: {
       deleteButtonContent: '<i class="ion-trash-a"></i>',
-      confirmDelete: true
+      confirmDelete: true,
     },
     columns: {
       id: {
         title: 'ID',
-        type: 'number'
-      },
-      firstName: {
-        title: 'First Name',
-        type: 'string'
-      },
-      lastName: {
-        title: 'Last Name',
-        type: 'string'
+        type: 'number',
       },
       username: {
         title: 'Username',
-        type: 'string'
+        type: 'string',
       },
       email: {
-        title: 'E-mail',
-        type: 'string'
+        title: 'E-Mail',
+        type: 'string',
       },
-      age: {
-        title: 'Age',
-        type: 'number'
-      }
-    }
+      group: {
+        title: 'Groups',
+        type: 'string',
+      },
+    },
   };
 
-  source: LocalDataSource = new LocalDataSource();
+  source: LocalDataSource = new LocalDataSource(); // DataSource für die Tabelle
 
-  constructor(protected service: SmartTablesService) {
-    this.service.getData().then((data) => {
-      this.source.load(data);
+  constructor(private restangular: Restangular) {
+    const baseAccounts = this.restangular.all('users');
+
+
+    baseAccounts.getList().toPromise().then((accounts) => {
+      this.source.load(accounts);
+      this.source.setPaging(1, 14); // Start on Page 1, 14 Users per Page
     });
+
+
   }
 
   //noinspection JSMethodCanBeStatic
