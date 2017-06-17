@@ -6,7 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { AdminComponent } from './admin.component';
 import { routing } from './admin.routing';
 import { HttpModule } from '@angular/http';
-import { SmartTablesService } from './admin.service';
+
 
 @NgModule({
   imports: [

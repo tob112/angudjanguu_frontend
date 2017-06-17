@@ -12,6 +12,7 @@ export class AdminComponent {
 
 
   private userList;
+  private baseUsers;
 
   //noinspection ReservedWordAsName
   settings = {
@@ -19,6 +20,7 @@ export class AdminComponent {
       addButtonContent: '<i class="ion-ios-plus-outline" title="Add User"></i>',
       createButtonContent: '<i class="ion-checkmark" title="Create"></i>',
       cancelButtonContent: '<i class="ion-close" title="Cancel"></i>',
+      confirmCreate: true,
     },
     edit: {
       editButtonContent: '<i class="ion-edit" title="Edit User"></i>',
@@ -43,30 +45,40 @@ export class AdminComponent {
         title: 'E-Mail',
         type: 'string',
       },
-      group: {
-        title: 'Groups',
-        type: 'string',
-      },
+      // group: {
+      //   title: 'Groups',
+      //   type: 'string',
+      // },
     },
     noDataMessage: 'loading...',
 
   };
 
-  source: LocalDataSource = new LocalDataSource(); // DataSource für die Tabelle
+  public source: LocalDataSource = new LocalDataSource(); // DataSource für die Tabelle
+
 
   constructor(private restangular: Restangular) {
-    const baseAccounts = this.restangular.all('users');  // api/v1/auth/users/
+    this.baseUsers = this.restangular.all('users');  // api/v1/auth/users/
 
 
-    baseAccounts.getList().toPromise().then((accounts) => {
+    this.baseUsers.getList().toPromise().then((accounts) => {
       this.source.load(accounts);
       this.source.setPaging(1, 14); // Start on Page 1, 14 Users per Page
     });
 
+  }
 
-    this.source.add('lol');
+  onCreate(event): void { // table refresh nach user add fehlt
 
+    const newUser = event.newData;
+    this.baseUsers.post(newUser).toPromise().then(() => {
+      event.confirm.resolve();  // erstellt user in table wenn post funktionier
 
+    }, (response) => {
+
+      window.alert(`Error with status code: ${response.status} -> ${response.text()}`);
+      event.confirm.reject(); // erstellt user nicht in table
+    });
   }
 
   //noinspection JSMethodCanBeStatic
@@ -84,13 +96,3 @@ export class AdminComponent {
 
 }
 
-//
-// $scope.addUser = function () {
-//             $scope.inserted = {
-//                 id: $scope.users.length + 1,
-//                 name: '',
-//                 status: null,
-//                 group: null
-//             };
-//             $scope.users.push($scope.inserted);
-//         };
