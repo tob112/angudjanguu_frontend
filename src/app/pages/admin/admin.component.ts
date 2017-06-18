@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { Restangular } from 'ngx-restangular';
-import { forEach } from '@angular/router/src/utils/collection';
+
 
 @Component({
   selector: 'admin-user-liste',
   templateUrl: './userTable.html',
   styleUrls: ['./admin.scss'],
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
 
 
   private userList;
@@ -58,27 +58,31 @@ export class AdminComponent {
 
 
   constructor(private restangular: Restangular) {
+  }
+
+  ngOnInit(): void {
+
     this.baseUsers = this.restangular.all('users');  // api/v1/auth/users/
 
-
-    this.baseUsers.getList().toPromise().then((accounts) => {
-      this.source.load(accounts);
-      this.source.setPaging(1, 14); // Start on Page 1, 14 Users per Page
+    this.baseUsers.getList().subscribe(users => {
+      this.source.load(users);
+      this.source.setPaging(1, 14);  // Start on Page 1, 14 Users per Page
     });
 
   }
 
+
   onCreate(event): void { // table refresh nach user add fehlt
 
     const newUser = event.newData;
-    this.baseUsers.post(newUser).toPromise().then(() => {
-      event.confirm.resolve();  // erstellt user in table wenn post funktionier
 
-    }, (response) => {
-
-      window.alert(`Error with status code: ${response.status} -> ${response.text()}`);
+    this.baseUsers.post(newUser).subscribe((response) => {
+      event.confirm.resolve();  // erstellt user in table wenn post funktioniert
+    }, (errorResponse) => {
+      window.alert(`Error with status code: ${errorResponse.status} -> ${errorResponse.text()}`);
       event.confirm.reject(); // erstellt user nicht in table
     });
+
   }
 
   //noinspection JSMethodCanBeStatic
@@ -89,9 +93,6 @@ export class AdminComponent {
       event.confirm.reject();
     }
   }
-
-
-  //noinspection JSMethodCanBeStatic
 
 
 }
