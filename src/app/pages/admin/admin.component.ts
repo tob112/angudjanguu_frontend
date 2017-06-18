@@ -62,7 +62,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.baseUsers = this.restangular.all('users');  // api/v1/auth/users/
 
     this.baseUsers.getList().subscribe(users => {
@@ -90,7 +89,13 @@ export class AdminComponent implements OnInit {
   //noinspection JSMethodCanBeStatic
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
+      this.baseUsers.get(event.data.id).subscribe((user) => {
+        user.remove();
+        event.confirm.resolve();
+      }, (errorResponse) => {
+        window.alert(`Error with status code: ${errorResponse.status} -> ${errorResponse.text()}`);
+        event.confirm.reject();
+      });
     } else {
       event.confirm.reject();
     }
@@ -102,7 +107,6 @@ export class AdminComponent implements OnInit {
     this.baseUsers.get(event.data.id).subscribe((user) => {
       user.username = event.newData.username;
       user.email = event.newData.email;
-
       user.put().subscribe((response) => {
         console.log('User saved');
         event.confirm.resolve();
@@ -114,7 +118,6 @@ export class AdminComponent implements OnInit {
     });
 
   }
-
 
 }
 
