@@ -26,6 +26,7 @@ export class AdminComponent implements OnInit {
       editButtonContent: '<i class="ion-edit" title="Edit User"></i>',
       saveButtonContent: '<i class="ion-checkmark" title="Save"></i>',
       cancelButtonContent: '<i class="ion-close" title="Cancel"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="ion-trash-a" title="Delete User"></i>',
@@ -34,8 +35,8 @@ export class AdminComponent implements OnInit {
     columns: {
       id: {
         title: 'ID',
+        editable: true,
         type: 'number',
-        editable: false,
       },
       username: {
         title: 'Username',
@@ -50,7 +51,7 @@ export class AdminComponent implements OnInit {
       //   type: 'string',
       // },
     },
-    noDataMessage: 'loading...',
+    noDataMessage: 'no data',
 
   };
 
@@ -65,15 +66,15 @@ export class AdminComponent implements OnInit {
     this.baseUsers = this.restangular.all('users');  // api/v1/auth/users/
 
     this.baseUsers.getList().subscribe(users => {
-      this.source.load(users);
+      this.userList = users;
+      this.source.load(this.userList);
       this.source.setPaging(1, 14);  // Start on Page 1, 14 Users per Page
     });
 
   }
 
 
-  onCreate(event): void { // table refresh nach user add fehlt
-
+  onCreateConfirm(event): void { // table refresh nach user add fehlt
     const newUser = event.newData;
 
     this.baseUsers.post(newUser).subscribe((response) => {
@@ -82,6 +83,7 @@ export class AdminComponent implements OnInit {
       window.alert(`Error with status code: ${errorResponse.status} -> ${errorResponse.text()}`);
       event.confirm.reject(); // erstellt user nicht in table
     });
+
 
   }
 
@@ -92,6 +94,25 @@ export class AdminComponent implements OnInit {
     } else {
       event.confirm.reject();
     }
+  }
+
+
+  onEditConfirm(event): void {
+
+    this.baseUsers.get(event.data.id).subscribe((user) => {
+      user.username = event.newData.username;
+      user.email = event.newData.email;
+
+      user.put().subscribe((response) => {
+        console.log('User saved');
+        event.confirm.resolve();
+      }, (errorResponse) => {
+        window.alert(`Error with status code: ${errorResponse.status} -> ${errorResponse.text()}`);
+        event.confirm.reject();
+      });
+
+    });
+
   }
 
 
