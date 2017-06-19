@@ -103,7 +103,6 @@ export class AdminComponent implements OnInit {
 
 
   onEditConfirm(event): void {
-
     this.baseUsers.get(event.data.id).subscribe((user) => {
       user.username = event.newData.username;
       user.email = event.newData.email;
