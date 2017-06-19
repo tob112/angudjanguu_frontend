@@ -17,19 +17,19 @@ export class AdminComponent implements OnInit {
   //noinspection ReservedWordAsName
   settings = {
     add: {
-      addButtonContent: '<i class="ion-ios-plus-outline" title="Add User"></i>',
+      addButtonContent: '<i class="ion-ios-plus-outline" title="Add"></i>',
       createButtonContent: '<i class="ion-checkmark" title="Create"></i>',
       cancelButtonContent: '<i class="ion-close" title="Cancel"></i>',
       confirmCreate: true,
     },
     edit: {
-      editButtonContent: '<i class="ion-edit" title="Edit User"></i>',
+      editButtonContent: '<i class="ion-edit" title="Edit"></i>',
       saveButtonContent: '<i class="ion-checkmark" title="Save"></i>',
       cancelButtonContent: '<i class="ion-close" title="Cancel"></i>',
       confirmSave: true,
     },
     delete: {
-      deleteButtonContent: '<i class="ion-trash-a" title="Delete User"></i>',
+      deleteButtonContent: '<i class="ion-trash-a" title="Delete"></i>',
       confirmDelete: true,
     },
     columns: {
