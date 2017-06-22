@@ -38,18 +38,22 @@ export class AdminComponent implements OnInit {
         editable: true,
         type: 'number',
       },
-      username: {
-        title: 'Username',
-        type: 'string',
-      },
       email: {
         title: 'E-Mail',
         type: 'string',
       },
-      // group: {
-      //   title: 'Groups',
-      //   type: 'string',
-      // },
+      first_name: {
+        title: 'Vorname',
+        type: 'string',
+      },
+      last_name: {
+        title: 'Nachname',
+        type: 'string',
+      },
+      group: {
+        title: 'Gruppe',
+        type: 'string',
+      },
     },
     noDataMessage: 'no data',
 

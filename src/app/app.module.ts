@@ -28,7 +28,7 @@ const APP_PROVIDERS = [
 export function RestangularConfigFactory(restangularProvider) {
 
 
-  restangularProvider.setBaseUrl('http://127.0.0.1:8000/api/v1/auth');
+  restangularProvider.setBaseUrl('http://127.0.0.1:8000/api/v1/');
 
 
   restangularProvider.setRequestSuffix('/');
