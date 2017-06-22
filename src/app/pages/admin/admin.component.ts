@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit {
     columns: {
       id: {
         title: 'ID',
-        editable: true,
+        editable: false,
         type: 'number',
       },
       email: {
@@ -50,10 +50,10 @@ export class AdminComponent implements OnInit {
         title: 'Nachname',
         type: 'string',
       },
-      group: {
-        title: 'Gruppe',
-        type: 'string',
-      },
+      // group: {
+      //   title: 'Gruppe',
+      //   type: 'string',
+      // },
     },
     noDataMessage: 'no data',
 
@@ -108,8 +108,9 @@ export class AdminComponent implements OnInit {
 
   onEditConfirm(event): void {
     this.baseUsers.get(event.data.id).subscribe((user) => {
-      user.username = event.newData.username;
       user.email = event.newData.email;
+      user.first_name = event.newData.first_name;
+      user.last_name = event.newData.last_name;
       user.put().subscribe((response) => {
         console.log('User saved');
         event.confirm.resolve();
