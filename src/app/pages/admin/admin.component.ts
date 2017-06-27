@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   private baseUsers;
 
   //noinspection ReservedWordAsName
-  settings = {
+  tableSettings = {
     add: {
       addButtonContent: '<i class="ion-ios-plus-outline" title="Add"></i>',
       createButtonContent: '<i class="ion-checkmark" title="Create"></i>',
@@ -57,7 +57,7 @@ export class AdminComponent implements OnInit {
     },
     noDataMessage: 'no data',
 
-  };
+  }; // Table settings
 
   public source: LocalDataSource = new LocalDataSource(); // DataSource für die Tabelle
 
