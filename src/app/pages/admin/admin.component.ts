@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   private baseUsers;
 
   //noinspection ReservedWordAsName
-  tableSettings = {
+  public settings: {} = {
     add: {
       addButtonContent: '<i class="ion-ios-plus-outline" title="Add"></i>',
       createButtonContent: '<i class="ion-checkmark" title="Create"></i>',
@@ -86,11 +86,9 @@ export class AdminComponent implements OnInit {
       window.alert(`Error with status code: ${errorResponse.status} -> ${errorResponse.text()}`);
       event.confirm.reject(); // erstellt user nicht in table
     });
-
-
   }
 
-  //noinspection JSMethodCanBeStatic
+
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       this.baseUsers.get(event.data.id).subscribe((user) => {

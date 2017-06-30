@@ -28,6 +28,7 @@ export const routes: Routes = [
       { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
       { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
       { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
+      { path: 'analysis', loadChildren: './analysis/analysis.module#AnalysisModule' },
 
 
     ],

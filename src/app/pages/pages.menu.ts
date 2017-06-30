@@ -22,6 +22,17 @@ export const PAGES_MENU = [
             icon: 'ion-social-snapchat',
             selected: false,
             expanded: false,
+            order: 9998,
+          },
+        },
+      },{
+        path: 'analysis',
+        data: {
+          menu: {
+            title: 'Analyse erstellen',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
             order: 9999,
           },
         },
