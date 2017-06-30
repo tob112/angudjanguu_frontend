@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Restangular } from 'ngx-restangular';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { Vector } from './vector.interface';
+import { Analysis, Vector } from './analysis.interface';
 
 @Component({
   moduleId: module.id,
@@ -11,7 +11,7 @@ import { Vector } from './vector.interface';
 })
 export class AnalysisComponent implements OnInit {
 
-  public myForm: FormGroup;
+  protected myForm: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder) {
@@ -20,28 +20,28 @@ export class AnalysisComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      addresses: this.formBuilder.array([
-        this.initAddress(),
-      ])
+      name: ['', [Validators.required, Validators.maxLength(20)]],
+      frequency: ['', Validators.required],
+      vectors: this.formBuilder.array([this.initVectors()]),
     });
   }
 
-  save(model: Vector) {
+  saveAnalysis() {
     // call API to save customer
-    // console.log(model);
+
   }
 
 
-  addAddress() {
-    const control = <FormArray>this.myForm.controls['addresses'];
-    control.push(this.initAddress());
+  addVector() {
+    const control = <FormArray>this.myForm.controls['vectors'];
+    control.push(this.initVectors());
   }
 
-  initAddress() {
+
+  initVectors() {
     return this.formBuilder.group({
-      street: ['', Validators.required],
-      postcode: [''],
+      name: ['', Validators.required],
+      land: [''],
     });
   }
 }

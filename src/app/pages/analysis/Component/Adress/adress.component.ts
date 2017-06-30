@@ -12,7 +12,7 @@ import { FormGroup } from '@angular/forms';
   templateUrl: 'address.html',
 })
 export class AddressComponent {
-  // we will pass in address from App component
+  // we will pass in vector from App component
   @Input('group')
   adressForm: FormGroup;
 
