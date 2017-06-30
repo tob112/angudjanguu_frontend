@@ -32,6 +32,12 @@ export class AnalysisComponent implements OnInit {
   }
 
 
+  removeVector(index: number) {
+    const control = <FormArray>this.myForm.controls['vectors'];
+    control.removeAt(index);
+  }
+
+
   addVector() {
     const control = <FormArray>this.myForm.controls['vectors'];
     control.push(this.initVectors());

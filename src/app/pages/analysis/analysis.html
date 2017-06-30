@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-12">
       <ba-card title="Neue Analyse" baCardClass="with-scroll">
-        <div class="col-md-4">
-          <form class="form-horizontal" [formGroup]="myForm" (submit)="saveAnalysis()">
+        <form class="form-horizontal" [formGroup]="myForm" (submit)="saveAnalysis()">
+          <div class="col-md-5">
             <div class="form-group row">
               <label for="analysisName" class="col-sm-2 form-control-label">Name</label>
               <div class="col-sm-10">
@@ -11,7 +11,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="frequency" class="col-sm-2 form-control-label">Frequenz</label>
+              <label for="frequency" class="col-sm-2 form-control-label">Frequenz(mins)</label>
               <div class="col-sm-10">
                 <input type="number" max="60" min="0" class="form-control" id="frequency" placeholder="minutes">
               </div>
@@ -25,11 +25,12 @@
                 </select>
               </div>
             </div>
-            <hr/>
-            <div class="col-md-8">
-
-              <button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>
-            </div>
+          </div>
+          <hr/>
+          <div class="col-md-4">
+            <button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>
+            <br/>
+            <br/>
             <div formArrayName="vectors">
               <div *ngFor="let vector of myForm.controls.vectors.controls; let i=index" class="panel panel-default">
                 <span>Vector {{i + 1}}</span>
@@ -45,10 +46,13 @@
                     <input type="text" class="form-control" id="vectorLand" placeholder="">
                   </div>
                 </div>
+                <button type="button" class="btn btn-default" (click)="removeVector(i)">Remove</button>
+                <br/>
+                <br>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
         <hr/>
         <button type="submit" class="btn btn-danger">Submit</button>
       </ba-card>
