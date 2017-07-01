@@ -1,139 +1,214 @@
 <div class="col-md-12">
   <ba-card title="Neue Analyse" baCardClass="with-scroll">
-    <form  (submit)="saveAnalysis()">
+    <form (submit)="saveAnalysis()">
 
-      <div class="col-md-4 float-left">
-        <div class="form-group row">
-          <label for="analysisName" class="col-sm-2 form-control-label">Name</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="analysisName" placeholder="">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="analysisName" class="col-sm-2 form-control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="analysisName" placeholder="">
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="frequency" class="col-sm-2 form-control-label">Frequenz</label>
-          <div class="col-sm-10">
-            <input type="number" max="60" min="0" class="form-control" id="frequency" placeholder="minutes">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="frequency" class="col-sm-2 form-control-label">Frequenz</label>
+            <div class="col-sm-10">
+              <input type="number" max="60" min="0" class="form-control" id="frequency" placeholder="minutes">
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle</label>
-          <div class="col-sm-10">
-            <select class="form-control" id="datasrouce">
-              <option>CDRS</option>
-              <option>Statistikdaten</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="lol1" class="col-sm-2 form-control-label">Platzhalter</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="lol1" placeholder="">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="datasrouce">
+                <option>CDRS</option>
+                <option>Statistikdaten</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
 
-
-      <div class="col-md-4 float-left">
-
-        <!--<p-dataTable [value]="cars">-->
-        <!--<p-column field="vin" header="Vin"></p-column>-->
-        <!--<p-column field="year" header="Year"></p-column>-->
-        <!--<p-column field="brand" header="Brand"></p-column>-->
-        <!--<p-column field="color" header="Color"></p-column>-->
-        <!--</p-dataTable>-->
-        <div class="form-group row">
-          <label for="lol3a" class="col-sm-2 form-control-label">Platzhalter</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="lol3a" placeholder="">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="asd" class="col-sm-2 form-control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="asd" placeholder="">
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="lo33" class="col-sm-2 form-control-label">Platzhalter</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="lo33" placeholder="">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="asdasdf" class="col-sm-2 form-control-label">Frequenz</label>
+            <div class="col-sm-10">
+              <input type="number" max="60" min="0" class="form-control" id="asdasdf" placeholder="minutes">
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="lol8" class="col-sm-2 form-control-label">Platzhalter</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="lol8" placeholder="">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="lol6" class="col-sm-2 form-control-label">Platzhalter</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="lol6" placeholder="">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="asd" class="col-sm-2 form-control-label">Datenquelle</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="asd">
+                <option>CDRS</option>
+                <option>Statistikdaten</option>
+              </select>
+            </div>
           </div>
         </div>
 
 
+        <!--<div class="form-group">-->
+        <!--<label for="lol1" class="col-sm-2 form-control-label">Platzhalter</label>-->
+        <!--<div class="col-sm-10">-->
+        <!--<input type="text" class="form-control" id="lol1" placeholder="">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="fgh" class="col-sm-2 form-control-label">Platzhalter</label>-->
+        <!--<div class="col-sm-10">-->
+        <!--<input type="text" class="form-control" id="fgh" placeholder="">-->
+        <!--</div>-->
+        <!--</div>-->
       </div>
+
+
+      <!--<div class="col-md-4 float-left">-->
+
+      <!--&lt;!&ndash;<p-dataTable [value]="cars">&ndash;&gt;-->
+      <!--&lt;!&ndash;<p-column field="vin" header="Vin"></p-column>&ndash;&gt;-->
+      <!--&lt;!&ndash;<p-column field="year" header="Year"></p-column>&ndash;&gt;-->
+      <!--&lt;!&ndash;<p-column field="brand" header="Brand"></p-column>&ndash;&gt;-->
+      <!--&lt;!&ndash;<p-column field="color" header="Color"></p-column>&ndash;&gt;-->
+      <!--&lt;!&ndash;</p-dataTable>&ndash;&gt;-->
+      <!--<div class="form-group row">-->
+      <!--<label for="lol3a" class="col-sm-2 form-control-label">Platzhalter</label>-->
+      <!--<div class="col-sm-10">-->
+      <!--<input type="text" class="form-control" id="lol3a" placeholder="">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="form-group row">-->
+      <!--<label for="lo33" class="col-sm-2 form-control-label">Platzhalter</label>-->
+      <!--<div class="col-sm-10">-->
+      <!--<input type="text" class="form-control" id="lo33" placeholder="">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="form-group row">-->
+      <!--<label for="lol8" class="col-sm-2 form-control-label">Platzhalter</label>-->
+      <!--<div class="col-sm-10">-->
+      <!--<input type="text" class="form-control" id="lol8" placeholder="">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="form-group row">-->
+      <!--<label for="lol6" class="col-sm-2 form-control-label">Platzhalter</label>-->
+      <!--<div class="col-sm-10">-->
+      <!--<input type="text" class="form-control" id="lol6" placeholder="">-->
+      <!--</div>-->
+      <!--</div>-->
+
+
+      <!--</div>-->
 
       <div class="col-md-12 float-left">
         <hr>
 
-        <button type="button" class="btn btn-default">Add Vector</button>
+        <button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>
 
         <div class="col-md-11 float-right">
           <ngx-datatable
             class="material"
             [rows]='rows'
             [rowHeight]="'auto'"
-            [columnMode]="'force'"
+            [columnMode]="'standard'"
             [headerHeight]="30">
-
-            <ngx-datatable-column name="index" width="50">
+            <ngx-datatable-column name="" width="1">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <i class="ion-close" (click)="removeVector(row)" >
+                </i>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="index" width="100">
               <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                <span
-                  title="Double click to edit"
-                  (dblclick)="editing[row.$$index + '-index'] = true"
-                  *ngIf="!editing[row.$$index + '-index']">
-              {{value}}
-            </span>
-                <!--suppress HtmlFormInputWithoutLabel -->
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'index', value, row)"
-                  *ngIf="editing[row.$$index + '-index']"
-                  type="text"
-                  [value]="value"
-                />
-
+                {{ row.$$index + 1 }}
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Gender" width="50">
-              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                 <span
-                   title="Double click to edit"
-                   (dblclick)="editing[row.$$index + '-gender'] = true"
-                   *ngIf="!editing[row.$$index + '-gender']">
-              {{value}}
-            </span>
-                <!--suppress HtmlFormInputWithoutLabel -->
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'gender', value, row)"
-                  *ngIf="editing[row.$$index + '-gender']"
-                  type="text"
-                  [value]="value"
-                />
-              </ng-template>
-
-            </ngx-datatable-column>
-            <ngx-datatable-column name="age" width="50">
+            <ngx-datatable-column name="name" width="200">
               <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                <span
                  title="Double click to edit"
-                 (dblclick)="editing[row.$$index + '-age'] = true"
-                 *ngIf="!editing[row.$$index + '-age']">
+                 (dblclick)="editing[row.$$index + '-name'] = true"
+                 *ngIf="!editing[row.$$index + '-name']">
               {{value}}
             </span>
                 <!--suppress HtmlFormInputWithoutLabel -->
                 <input
                   autofocus
-                  (blur)="updateValue($event, 'age', value, row)"
-                  *ngIf="editing[row.$$index + '-age']"
+                  (blur)="updateValue($event, 'name', value, row)"
+                  *ngIf="editing[row.$$index + '-name']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="wert1" width="200">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                 <span
+                   title="Double click to edit"
+                   (dblclick)="editing[row.$$index + '-wert1'] = true"
+                   *ngIf="!editing[row.$$index + '-wert1']">
+              {{value}}
+            </span>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'wert1', value, row)"
+                  *ngIf="editing[row.$$index + '-wert1']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="wert2" width="200">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+               <span
+                 title="Double click to edit"
+                 (dblclick)="editing[row.$$index + '-wert2'] = true"
+                 *ngIf="!editing[row.$$index + '-wert2']">
+              {{value}}
+            </span>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'wert2', value, row)"
+                  *ngIf="editing[row.$$index + '-wert2']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="wert3" width="200">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+               <span
+                 title="Double click to edit"
+                 (dblclick)="editing[row.$$index + '-wert3'] = true"
+                 *ngIf="!editing[row.$$index + '-wert3']">
+              {{value}}
+            </span>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'wert3', value, row)"
+                  *ngIf="editing[row.$$index + '-wert3']"
                   type="text"
                   [value]="value"
                 />
@@ -143,10 +218,25 @@
 
           </ngx-datatable>
         </div>
+        <div class="clearfix"></div>
+      <hr>
+      </div>
+
+      <div class="col-md-6">
+
+
+
 
       </div>
 
+
+
+
+
+
+      <button type="submit" class="btn btn-danger">Submit</button>
     </form>
+
   </ba-card>
 </div>
 

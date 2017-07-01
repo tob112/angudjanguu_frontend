@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Restangular } from 'ngx-restangular';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { Analysis, Vector } from './analysis.interface';
 
-import { Car } from './vector.interface'
+
+import { Vector } from './vector.interface'
 
 
 @Component({
@@ -15,21 +15,22 @@ import { Car } from './vector.interface'
 export class AnalysisComponent implements OnInit {
 
 
-  editing = {};
+  public editing = {};
+  public rows: Vector[];
 
 
   constructor() {
   }
 
-  rows = [
-    { index: '1', gender: 'Male', age: 'Swimlane' },
-    { index: '2', gender: 'Male', age: 'KFC' },
-    { index: '3', gender: 'Female', age: 'Burger King' },
-  ];
+  // rows = [
+  //   {name: 'klaus', gender: 'Male', age: 'Swimlane'},
+  //   {name: 'kleber', gender: 'Male', age: 'KFC'},
+  //   {name: 'lul', gender: 'Female', age: 'Burger King'},
+  // ];
   columns = [
-    { prop: 'index' },
-    { name: 'gender' },
-    { name: 'age' },
+    {prop: 'name'},
+    {name: 'gender'},
+    {name: 'age'},
   ];
 
 
@@ -39,15 +40,14 @@ export class AnalysisComponent implements OnInit {
   }
 
 
-  // fillCars(): void {
-  //
-  //   this.cars = [
-  //     {vin: 1, year: 'A', brand: 1, color: 'lol'},
-  //   ];
-  //
-  // }
-
   ngOnInit() {
+
+    this.rows = [
+      {name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3}
+
+    ]
+
+
     // this.myForm = this.formBuilder.group({
     //   name: ['', [Validators.required, Validators.maxLength(20)]],
     //   frequency: ['', Validators.required],
@@ -61,24 +61,18 @@ export class AnalysisComponent implements OnInit {
 
   }
 
-  //
-  // removeVector(index: number) {
-  //   const control = <FormArray>this.myForm.controls['vectors'];
-  //   control.removeAt(index);
-  // }
-  //
-  //
-  // addVector() {
-  //   const control = <FormArray>this.myForm.controls['vectors'];
-  //   control.push(this.initVectors());
-  // }
-  //
-  //
-  // initVectors() {
-  //   return this.formBuilder.group({
-  //     name: ['', Validators.required],
-  //     land: [''],
-  //   });
-  // }
+  removeVector(row: any): void {
+
+    this.rows.splice(row.$$index, 1)
+
+  }
+
+
+  addVector(): void {
+    this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3})
+
+  }
+
+
 }
 
