@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { RestangularModule, RestangularHttp, Restangular } from 'ngx-restangular';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -57,6 +58,7 @@ export type StoreType = {
     PagesModule,
     routing,
     RestangularModule.forRoot(RestangularConfigFactory),
+    NgxDatatableModule,
 
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

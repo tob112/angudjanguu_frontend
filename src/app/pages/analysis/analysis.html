@@ -1,167 +1,253 @@
-
 <div class="col-md-12">
   <ba-card title="Neue Analyse" baCardClass="with-scroll">
-    <form [formGroup]="myForm" (submit)="saveAnalysis()">
+    <form  (submit)="saveAnalysis()">
 
-        <div class="col-md-4 float-left">
-          <div class="form-group row">
-            <label for="analysisName" class="col-sm-2 form-control-label">Name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="analysisName" placeholder="">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="frequency" class="col-sm-2 form-control-label">Frequenz</label>
-            <div class="col-sm-10">
-              <input type="number" max="60" min="0" class="form-control" id="frequency" placeholder="minutes">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle</label>
-            <div class="col-sm-10">
-              <select class="form-control" id="datasrouce">
-                <option>CDRS</option>
-                <option>Statistikdaten</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="lol1" class="col-sm-2 form-control-label">Platzhalter</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="lol1" placeholder="">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="lol2" class="col-sm-2 form-control-label">Platzhalter</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="lol2" placeholder="">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="lol3" class="col-sm-2 form-control-label">Platzhalter</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="lol3" placeholder="">
-            </div>
-          </div>
-
-        </div>
-
-
-
-      <div class="col-md-8 float-left">
+      <div class="col-md-4 float-left">
         <div class="form-group row">
-          <label for="lol4" class="col-sm-2 form-control-label">Platzhalter</label>
+          <label for="analysisName" class="col-sm-2 form-control-label">Name</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="lol4" placeholder="">
+            <input type="text" class="form-control" id="analysisName" placeholder="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="frequency" class="col-sm-2 form-control-label">Frequenz</label>
+          <div class="col-sm-10">
+            <input type="number" max="60" min="0" class="form-control" id="frequency" placeholder="minutes">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="datasrouce">
+              <option>CDRS</option>
+              <option>Statistikdaten</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="lol1" class="col-sm-2 form-control-label">Platzhalter</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="lol1" placeholder="">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 float-left">
+
+        <!--<p-dataTable [value]="cars">-->
+        <!--<p-column field="vin" header="Vin"></p-column>-->
+        <!--<p-column field="year" header="Year"></p-column>-->
+        <!--<p-column field="brand" header="Brand"></p-column>-->
+        <!--<p-column field="color" header="Color"></p-column>-->
+        <!--</p-dataTable>-->
+        <div class="form-group row">
+          <label for="lol3a" class="col-sm-2 form-control-label">Platzhalter</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="lol3a" placeholder="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="lo33" class="col-sm-2 form-control-label">Platzhalter</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="lo33" placeholder="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="lol8" class="col-sm-2 form-control-label">Platzhalter</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="lol8" placeholder="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="lol6" class="col-sm-2 form-control-label">Platzhalter</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="lol6" placeholder="">
           </div>
         </div>
 
+
+      </div>
+
+      <div class="col-md-12 float-left">
+        <hr>
+
+        <button type="button" class="btn btn-default">Add Vector</button>
+
+        <div class="col-md-11 float-right">
+          <ngx-datatable
+            class="material"
+            [rows]='rows'
+            [rowHeight]="'auto'"
+            [columnMode]="'force'"
+            [headerHeight]="30">
+
+            <ngx-datatable-column name="index" width="50">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                <span
+                  title="Double click to edit"
+                  (dblclick)="editing[row.$$index + '-index'] = true"
+                  *ngIf="!editing[row.$$index + '-index']">
+              {{value}}
+            </span>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'index', value, row)"
+                  *ngIf="editing[row.$$index + '-index']"
+                  type="text"
+                  [value]="value"
+                />
+
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Gender" width="50">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                 <span
+                   title="Double click to edit"
+                   (dblclick)="editing[row.$$index + '-gender'] = true"
+                   *ngIf="!editing[row.$$index + '-gender']">
+              {{value}}
+            </span>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'gender', value, row)"
+                  *ngIf="editing[row.$$index + '-gender']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+
+            </ngx-datatable-column>
+            <ngx-datatable-column name="age" width="50">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+               <span
+                 title="Double click to edit"
+                 (dblclick)="editing[row.$$index + '-age'] = true"
+                 *ngIf="!editing[row.$$index + '-age']">
+              {{value}}
+            </span>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'age', value, row)"
+                  *ngIf="editing[row.$$index + '-age']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+            </ngx-datatable-column>
+
+
+          </ngx-datatable>
         </div>
 
+      </div>
 
     </form>
   </ba-card>
 </div>
 
 
-
-      <!--&lt;!&ndash;&lt;!&ndash;<div class="col-md-5">&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;<button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div formArrayName="vectors" class="vector">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div *ngFor="let vector of myForm.controls['vectors'].controls; let i=index" class="panel panel-default">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<ba-card  baCardClass="with-scroll" title="Vector {{ i + 1}}">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group row ">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label for="vectorName" class="col-sm-2 form-control-label">Name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-sm-10">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" id="vectorName" placeholder="">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group row">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label for="vectorLand" class="col-sm-2 form-control-label">Land</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-sm-10">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" id="vectorLand" placeholder="">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="button" class="btn btn-default" (click)="removeVector(i)">Remove</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</ba-card>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<div class="col-md-5">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div formArrayName="vectors" class="vector">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 
 
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div *ngFor="let vector of myForm.controls['vectors'].controls; let i=index" class="panel panel-default">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<ba-card  baCardClass="with-scroll" title="Vector {{ i + 1}}">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group row ">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label for="vectorName" class="col-sm-2 form-control-label">Name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-sm-10">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" id="vectorName" placeholder="">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group row">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label for="vectorLand" class="col-sm-2 form-control-label">Land</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-sm-10">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" id="vectorLand" placeholder="">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="button" class="btn btn-default" (click)="removeVector(i)">Remove</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</ba-card>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 
 
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</form>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 
 
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<hr/>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="submit" class="btn btn-danger">Submit</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</ba-card>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</form>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 
 
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="container">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="row">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-xs-12">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<h4>Add customer</h4>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>Name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="name">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<small *ngIf="!myForm.controls.name.valid" class="text-danger">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;Name is required (minimum 5 characters).&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</small>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;addresses&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div formArrayName="vectors">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div *ngFor="let vector of myForm.controls.vectors.controls; let i=index" class="panel panel-default">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="panel-heading">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<span>Vector {{i + 1}}</span>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="panel-body" [formGroupName]="i">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group col-xs-6">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="name">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<small [hidden]="myForm.controls.vectors.controls[i].controls.name.valid" class="text-danger">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;name is required&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</small>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group col-xs-6">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>land</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="land">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<hr/>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="submit" class="btn btn-danger">Submit</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</ba-card>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<a (clicaddVectorress()" style="cursor: default">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;Add another address +&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</a>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="clearfix"></div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div>myForm details:-</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<pre>form value: <br>{{myForm.value | json}}</pre>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</form>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-      <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="container">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="row">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-xs-12">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<h4>Add customer</h4>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>Name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="name">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<small *ngIf="!myForm.controls.name.valid" class="text-danger">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;Name is required (minimum 5 characters).&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</small>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;addresses&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div formArrayName="vectors">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div *ngFor="let vector of myForm.controls.vectors.controls; let i=index" class="panel panel-default">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="panel-heading">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<span>Vector {{i + 1}}</span>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="panel-body" [formGroupName]="i">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group col-xs-6">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="name">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<small [hidden]="myForm.controls.vectors.controls[i].controls.name.valid" class="text-danger">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;name is required&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</small>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group col-xs-6">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>land</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="land">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<a (clicaddVectorress()" style="cursor: default">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;Add another address +&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</a>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="clearfix"></div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div>myForm details:-</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<pre>form value: <br>{{myForm.value | json}}</pre>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</form>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 
 

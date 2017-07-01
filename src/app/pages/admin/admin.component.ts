@@ -57,7 +57,7 @@ export class AdminComponent implements OnInit {
     },
     noDataMessage: 'no data',
 
-  }; // Table settings
+  };
 
   public source: LocalDataSource = new LocalDataSource(); // DataSource für die Tabelle
 
