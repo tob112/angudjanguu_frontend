@@ -6,11 +6,10 @@ import { NgaModule } from '../../theme/nga.module';
 import { AnalysisComponent } from './analysis.component';
 import { routing } from './analysis.routing';
 import { HttpModule } from '@angular/http';
-import { AddressComponent } from './Component/Adress/adress.component'
+import { AddressComponent } from './components/Adress/adress.component'
 import { DataTableModule, SharedModule } from 'primeng/primeng';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { AngularDualListBoxModule } from 'angular-dual-listbox';
-
+import { CustomDualListComponent } from './components/dualist/dualist.component';
 
 
 @NgModule({
@@ -25,13 +24,10 @@ import { AngularDualListBoxModule } from 'angular-dual-listbox';
     DataTableModule,
     SharedModule,
     NgxDatatableModule,
-    AngularDualListBoxModule
-
-
   ],
   declarations: [
     AnalysisComponent,
-    AddressComponent,
+    CustomDualListComponent
   ],
   providers: [],
 })

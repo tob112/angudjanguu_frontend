@@ -62,56 +62,9 @@
         </div>
 
 
-        <!--<div class="form-group">-->
-        <!--<label for="lol1" class="col-sm-2 form-control-label">Platzhalter</label>-->
-        <!--<div class="col-sm-10">-->
-        <!--<input type="text" class="form-control" id="lol1" placeholder="">-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-        <!--<label for="fgh" class="col-sm-2 form-control-label">Platzhalter</label>-->
-        <!--<div class="col-sm-10">-->
-        <!--<input type="text" class="form-control" id="fgh" placeholder="">-->
-        <!--</div>-->
-        <!--</div>-->
+
       </div>
 
-
-      <!--<div class="col-md-4 float-left">-->
-
-      <!--&lt;!&ndash;<p-dataTable [value]="cars">&ndash;&gt;-->
-      <!--&lt;!&ndash;<p-column field="vin" header="Vin"></p-column>&ndash;&gt;-->
-      <!--&lt;!&ndash;<p-column field="year" header="Year"></p-column>&ndash;&gt;-->
-      <!--&lt;!&ndash;<p-column field="brand" header="Brand"></p-column>&ndash;&gt;-->
-      <!--&lt;!&ndash;<p-column field="color" header="Color"></p-column>&ndash;&gt;-->
-      <!--&lt;!&ndash;</p-dataTable>&ndash;&gt;-->
-      <!--<div class="form-group row">-->
-      <!--<label for="lol3a" class="col-sm-2 form-control-label">Platzhalter</label>-->
-      <!--<div class="col-sm-10">-->
-      <!--<input type="text" class="form-control" id="lol3a" placeholder="">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="form-group row">-->
-      <!--<label for="lo33" class="col-sm-2 form-control-label">Platzhalter</label>-->
-      <!--<div class="col-sm-10">-->
-      <!--<input type="text" class="form-control" id="lo33" placeholder="">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="form-group row">-->
-      <!--<label for="lol8" class="col-sm-2 form-control-label">Platzhalter</label>-->
-      <!--<div class="col-sm-10">-->
-      <!--<input type="text" class="form-control" id="lol8" placeholder="">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="form-group row">-->
-      <!--<label for="lol6" class="col-sm-2 form-control-label">Platzhalter</label>-->
-      <!--<div class="col-sm-10">-->
-      <!--<input type="text" class="form-control" id="lol6" placeholder="">-->
-      <!--</div>-->
-      <!--</div>-->
-
-
-      <!--</div>-->
 
       <div class="col-md-12">
         <hr>
@@ -127,7 +80,7 @@
             [headerHeight]="30">
             <ngx-datatable-column name="" width="1">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <i class="ion-close" (click)="removeVector(row)" >
+                <i class="ion-close" (click)="removeVector(row)">
                 </i>
               </ng-template>
             </ngx-datatable-column>
@@ -136,6 +89,7 @@
                 {{ row.$$index + 1 }}
               </ng-template>
             </ngx-datatable-column>
+
 
             <ngx-datatable-column name="name" width="200">
               <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
@@ -215,17 +169,54 @@
               </ng-template>
             </ngx-datatable-column>
 
+            <ngx-datatable-column name="wert4" width="200">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+               <span
+                 title="Double click to edit"
+                 (dblclick)="editing[row.$$index + '-wert4'] = true"
+                 *ngIf="!editing[row.$$index + '-wert4']">
+              {{value}}
+            </span>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'wert4', value, row)"
+                  *ngIf="editing[row.$$index + '-wert4']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="wert5" width="200">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+               <span
+                 title="Double click to edit"
+                 (dblclick)="editing[row.$$index + '-wert5'] = true"
+                 *ngIf="!editing[row.$$index + '-wert5']">
+              {{value}}
+            </span>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'wert5', value, row)"
+                  *ngIf="editing[row.$$index + '-wert5']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+            </ngx-datatable-column>
+
 
           </ngx-datatable>
         </div>
         <div class="clearfix"></div>
-      <hr>
+        <hr>
       </div>
       <div class="col-md-6">
-        <dual-list [source]="source" [(destination)]="confirmed"></dual-list>
+        <custom-dual-list [format]="format" [source]="source" [(destination)]="confirmed"></custom-dual-list>
       </div>
-
-
 
 
       <hr>
@@ -234,105 +225,3 @@
 
   </ba-card>
 </div>
-
-
-<!--&lt;!&ndash;&lt;!&ndash;<div class="col-md-5">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;<button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div formArrayName="vectors" class="vector">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div *ngFor="let vector of myForm.controls['vectors'].controls; let i=index" class="panel panel-default">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<ba-card  baCardClass="with-scroll" title="Vector {{ i + 1}}">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group row ">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label for="vectorName" class="col-sm-2 form-control-label">Name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-sm-10">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" id="vectorName" placeholder="">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group row">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label for="vectorLand" class="col-sm-2 form-control-label">Land</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-sm-10">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" id="vectorLand" placeholder="">&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="button" class="btn btn-default" (click)="removeVector(i)">Remove</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br/>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<br>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</ba-card>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</form>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<hr/>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="submit" class="btn btn-danger">Submit</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</ba-card>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="container">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="row">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="col-xs-12">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<h4>Add customer</h4>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>Name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="name">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<small *ngIf="!myForm.controls.name.valid" class="text-danger">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;Name is required (minimum 5 characters).&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</small>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;addresses&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div formArrayName="vectors">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div *ngFor="let vector of myForm.controls.vectors.controls; let i=index" class="panel panel-default">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="panel-heading">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<span>Vector {{i + 1}}</span>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="panel-body" [formGroupName]="i">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group col-xs-6">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>name</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="name">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<small [hidden]="myForm.controls.vectors.controls[i].controls.name.valid" class="text-danger">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;name is required&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</small>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="form-group col-xs-6">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<label>land</label>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<input type="text" class="form-control" formControlName="land">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<a (clicaddVectorress()" style="cursor: default">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;Add another address +&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</a>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&ndash;&gt;&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="clearfix"></div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div class="margin-20">&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<div>myForm details:-</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<pre>form value: <br>{{myForm.value | json}}</pre>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</form>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-
-

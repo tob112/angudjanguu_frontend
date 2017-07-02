@@ -7,4 +7,6 @@ export interface Vector {
   wert1: number;
   wert2: string;
   wert3: number;
+  wert4: string;
+  wert5: string;
 }

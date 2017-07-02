@@ -16,43 +16,32 @@ export class AnalysisComponent implements OnInit {
 
 
   public editing = {};
-  public rows: Vector[] = [{name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3}];
-  public columns: any[] = [
-    {prop: 'name'},
-    {name: 'gender'},
-    {name: 'age'},
-  ];
+  public rows: Vector[] = [{name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asdasd'}];
 
-  source: Array<any> = [
+
+  public format = {
+    add: 'add Messgröße',
+    remove: 'remove Messgröße',
+    all: 'All',
+    none: 'None',
+    direction: 'left-to-right'
+  };
+
+  public source: Array<any> = [
     {
       "_id": 1,
-      "_name": "Antonito",
+      "_name": "ACT [ms]",
     },
     {
       "_id": 2,
-      "_name": "Big Horn",
+      "_name": "CST [ms]",
     },
     {
       "_id": 3,
-      "_name": "Sublette",
+      "_name": "CAWT [ms]",
     }
   ];
-
-
-  confirmed: Array<any> = [
-    {
-      "_id": 1,
-      "_name": "Antonito",
-    },
-    {
-      "_id": 2,
-      "_name": "Big Horn",
-    },
-    {
-      "_id": 3,
-      "_name": "Sublette",
-    }
-  ];
+  public confirmed: Array<any> = [];
 
 
   constructor() {
@@ -60,6 +49,9 @@ export class AnalysisComponent implements OnInit {
 
   ngOnInit() {
 
+    // for (let column in this.rows[0]) {
+    //   this.rows.push(column)
+    // }
 
 
     // this.myForm = this.formBuilder.group({
@@ -90,7 +82,7 @@ export class AnalysisComponent implements OnInit {
 
 
   public addVector(): void {
-    this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3})
+    this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asd'})
 
   }
 
