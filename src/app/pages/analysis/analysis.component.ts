@@ -16,36 +16,19 @@ export class AnalysisComponent implements OnInit {
 
 
   public editing = {};
-  public rows: Vector[];
-
-
-  constructor() {
-  }
-
-  // rows = [
-  //   {name: 'klaus', gender: 'Male', age: 'Swimlane'},
-  //   {name: 'kleber', gender: 'Male', age: 'KFC'},
-  //   {name: 'lul', gender: 'Female', age: 'Burger King'},
-  // ];
-  columns = [
+  public rows: Vector[] = [{name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3}];
+  public columns: any[] = [
     {prop: 'name'},
     {name: 'gender'},
     {name: 'age'},
   ];
 
 
-  updateValue(event, cell, cellValue, row) {
-    this.editing[row.$$index + '-' + cell] = false;
-    this.rows[row.$$index][cell] = event.target.value;
+  constructor() {
   }
-
 
   ngOnInit() {
 
-    this.rows = [
-      {name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3}
-
-    ]
 
 
     // this.myForm = this.formBuilder.group({
@@ -56,19 +39,26 @@ export class AnalysisComponent implements OnInit {
 
   }
 
-  saveAnalysis() {
+
+  public updateValue(event, cell, cellValue, row): void {
+    this.editing[row.$$index + '-' + cell] = false;
+    this.rows[row.$$index][cell] = event.target.value;
+  }
+
+
+  public saveAnalysis(): void {
     // call API to save customer
 
   }
 
-  removeVector(row: any): void {
+  public removeVector(row: any): void {
 
     this.rows.splice(row.$$index, 1)
 
   }
 
 
-  addVector(): void {
+  public addVector(): void {
     this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3})
 
   }
