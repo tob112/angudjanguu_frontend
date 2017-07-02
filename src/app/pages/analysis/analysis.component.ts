@@ -23,6 +23,37 @@ export class AnalysisComponent implements OnInit {
     {name: 'age'},
   ];
 
+  source: Array<any> = [
+    {
+      "_id": 1,
+      "_name": "Antonito",
+    },
+    {
+      "_id": 2,
+      "_name": "Big Horn",
+    },
+    {
+      "_id": 3,
+      "_name": "Sublette",
+    }
+  ];
+
+
+  confirmed: Array<any> = [
+    {
+      "_id": 1,
+      "_name": "Antonito",
+    },
+    {
+      "_id": 2,
+      "_name": "Big Horn",
+    },
+    {
+      "_id": 3,
+      "_name": "Sublette",
+    }
+  ];
+
 
   constructor() {
   }

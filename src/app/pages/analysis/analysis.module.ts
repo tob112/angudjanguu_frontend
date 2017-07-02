@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { AddressComponent } from './Component/Adress/adress.component'
 import { DataTableModule, SharedModule } from 'primeng/primeng';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AngularDualListBoxModule } from 'angular-dual-listbox';
 
 
 
@@ -24,6 +25,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     DataTableModule,
     SharedModule,
     NgxDatatableModule,
+    AngularDualListBoxModule
 
 
   ],

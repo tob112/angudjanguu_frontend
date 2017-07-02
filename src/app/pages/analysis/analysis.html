@@ -113,7 +113,7 @@
 
       <!--</div>-->
 
-      <div class="col-md-12 float-left">
+      <div class="col-md-12">
         <hr>
 
         <button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>
@@ -221,13 +221,14 @@
         <div class="clearfix"></div>
       <hr>
       </div>
+      <div class="col-md-6">
+        <dual-list [source]="source" [(destination)]="confirmed"></dual-list>
+      </div>
 
 
 
 
-
-
-
+      <hr>
       <button type="submit" class="btn btn-danger">Submit</button>
     </form>
 
