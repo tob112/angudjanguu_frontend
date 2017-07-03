@@ -3,7 +3,7 @@ import { Restangular } from 'ngx-restangular';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 
-import { Vector } from './vector.interface'
+import { Vector } from './vector.interface';
 
 
 @Component({
@@ -17,8 +17,6 @@ export class AnalysisComponent implements OnInit {
 
   public editing = {};
   public rows: Vector[] = [{name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asdasd'}];
-
-
   public format = {
     add: 'add Messgröße',
     remove: 'remove Messgröße',
@@ -26,63 +24,80 @@ export class AnalysisComponent implements OnInit {
     none: 'None',
     direction: 'left-to-right',
   };
-
-  public source = [
+  public source: any = [
     {
-      "_id": 1,
-      "_name": "ACT [ms]",
+      '_id': 1,
+      '_name': 'ACT [ms]',
     },
     {
-      "_id": 2,
-      "_name": "CST [ms]",
+      '_id': 2,
+      '_name': 'CST [ms]',
     },
     {
-      "_id": 3,
-      "_name": "CAWT [ms]",
-    }
+      '_id': 3,
+      '_name': 'CAWT [ms]',
+    },
   ];
   public confirmed = [];
+  private finalFormData = [];
 
+  public analysisForm = this.formBuilder.group({
+    analysisName: ['', Validators.required],
+    dataSource: ['', Validators.required],
+    frequency: ['', Validators.required],
+    placeholder1: ['', Validators.required],
+    placeholder2: ['', Validators.required],
+    placeholder3: ['', Validators.required],
+  });
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder) {
   }
 
-  ngOnInit() {
 
-    // for (let column in this.rows[0]) {
-    //   this.rows.push(column)
+  ngOnInit(): void {
+  }
+
+  saveAnalysis(): void {
+
+    // for (const row of this.rows){
+    //   console.log(row);
+    //
     // }
 
 
-    // this.myForm = this.formBuilder.group({
-    //   name: ['', [Validators.required, Validators.maxLength(20)]],
-    //   frequency: ['', Validators.required],
-    //   vectors: this.formBuilder.array([this.initVectors()]),
-    // });
+    this.finalFormData.push(this.analysisForm.value);
+    this.finalFormData.push(this.rows);
+
+    console.log(this.finalFormData);
 
   }
 
+  // ngOnInit(f) {
+  //
+  //   // for (let column in this.rows[0]) {
+  //   //   this.rows.push(column)
+  //   // }
+  //
+
+  //
+  // }
+
 
   public updateValue(event, cell, cellValue, row): void {
-    this.editing[row.$$index + '-' + cell] = false;
+    this.editing[`${row.$$index}-${cell}`] = false;
     this.rows[row.$$index][cell] = event.target.value;
   }
 
 
-  public saveAnalysis(): void {
-    // call API to save customer
+  public removeVector(row: any) {
 
-  }
-
-  public removeVector(row: any): void {
-
-    this.rows.splice(row.$$index, 1)
+    this.rows.splice(row.$$index, 1);
 
   }
 
 
   public addVector(): void {
-    this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asd'})
+    this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asd'});
 
   }
 
