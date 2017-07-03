@@ -24,10 +24,10 @@ export class AnalysisComponent implements OnInit {
     remove: 'remove Messgröße',
     all: 'All',
     none: 'None',
-    direction: 'left-to-right'
+    direction: 'left-to-right',
   };
 
-  public source: Array<any> = [
+  public source = [
     {
       "_id": 1,
       "_name": "ACT [ms]",
@@ -41,7 +41,7 @@ export class AnalysisComponent implements OnInit {
       "_name": "CAWT [ms]",
     }
   ];
-  public confirmed: Array<any> = [];
+  public confirmed = [];
 
 
   constructor() {

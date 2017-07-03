@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <label for="analysisName" class="col-sm-2 form-control-label">Name</label>
+            <label for="analysisName" class="col-sm-2 form-control-label">Name1</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="analysisName" placeholder="">
             </div>
@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label for="frequency" class="col-sm-2 form-control-label">Frequenz</label>
+            <label for="frequency" class="col-sm-2 form-control-label">Frequenz1</label>
             <div class="col-sm-10">
               <input type="number" max="60" min="0" class="form-control" id="frequency" placeholder="minutes">
             </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle</label>
+            <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle1</label>
             <div class="col-sm-10">
               <select class="form-control" id="datasrouce">
                 <option>CDRS</option>
@@ -62,164 +62,160 @@
         </div>
 
 
-
       </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+
+          <button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>
+          <br>
+          <br>
+          <div class="col-md-11">
+            <ngx-datatable
+              class="material"
+              [rows]='rows'
+              [rowHeight]="'auto'"
+              [columnMode]="'force'"
+              [headerHeight]="30">
+              <ngx-datatable-column name="" width="1">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <i class="ion-close" (click)="removeVector(row)">
+                  </i>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="index" width="100">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  {{ row.$$index + 1 }}
+                </ng-template>
+              </ngx-datatable-column>
 
 
-      <div class="col-md-12">
-        <hr>
-
-        <button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>
-
-        <div class="col-md-11 float-right">
-          <ngx-datatable
-            class="material"
-            [rows]='rows'
-            [rowHeight]="'auto'"
-            [columnMode]="'standard'"
-            [headerHeight]="30">
-            <ngx-datatable-column name="" width="1">
-              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <i class="ion-close" (click)="removeVector(row)">
-                </i>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="index" width="100">
-              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-                {{ row.$$index + 1 }}
-              </ng-template>
-            </ngx-datatable-column>
-
-
-            <ngx-datatable-column name="name" width="200">
-              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+              <ngx-datatable-column name="name" width="200">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                <span
                  title="Double click to edit"
                  (dblclick)="editing[row.$$index + '-name'] = true"
                  *ngIf="!editing[row.$$index + '-name']">
               {{value}}
             </span>
-                <!--suppress HtmlFormInputWithoutLabel -->
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'name', value, row)"
-                  *ngIf="editing[row.$$index + '-name']"
-                  type="text"
-                  [value]="value"
-                />
-              </ng-template>
-            </ngx-datatable-column>
+                  <!--suppress HtmlFormInputWithoutLabel -->
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'name', value, row)"
+                    *ngIf="editing[row.$$index + '-name']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
 
-            <ngx-datatable-column name="wert1" width="200">
-              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+              <ngx-datatable-column name="wert1" width="200">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                  <span
                    title="Double click to edit"
                    (dblclick)="editing[row.$$index + '-wert1'] = true"
                    *ngIf="!editing[row.$$index + '-wert1']">
               {{value}}
             </span>
-                <!--suppress HtmlFormInputWithoutLabel -->
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'wert1', value, row)"
-                  *ngIf="editing[row.$$index + '-wert1']"
-                  type="text"
-                  [value]="value"
-                />
-              </ng-template>
+                  <!--suppress HtmlFormInputWithoutLabel -->
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'wert1', value, row)"
+                    *ngIf="editing[row.$$index + '-wert1']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
 
-            </ngx-datatable-column>
+              </ngx-datatable-column>
 
-            <ngx-datatable-column name="wert2" width="200">
-              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+              <ngx-datatable-column name="wert2" width="200">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                <span
                  title="Double click to edit"
                  (dblclick)="editing[row.$$index + '-wert2'] = true"
                  *ngIf="!editing[row.$$index + '-wert2']">
               {{value}}
             </span>
-                <!--suppress HtmlFormInputWithoutLabel -->
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'wert2', value, row)"
-                  *ngIf="editing[row.$$index + '-wert2']"
-                  type="text"
-                  [value]="value"
-                />
-              </ng-template>
-            </ngx-datatable-column>
+                  <!--suppress HtmlFormInputWithoutLabel -->
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'wert2', value, row)"
+                    *ngIf="editing[row.$$index + '-wert2']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
 
 
-            <ngx-datatable-column name="wert3" width="200">
-              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+              <ngx-datatable-column name="wert3" width="200">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                <span
                  title="Double click to edit"
                  (dblclick)="editing[row.$$index + '-wert3'] = true"
                  *ngIf="!editing[row.$$index + '-wert3']">
               {{value}}
             </span>
-                <!--suppress HtmlFormInputWithoutLabel -->
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'wert3', value, row)"
-                  *ngIf="editing[row.$$index + '-wert3']"
-                  type="text"
-                  [value]="value"
-                />
-              </ng-template>
-            </ngx-datatable-column>
+                  <!--suppress HtmlFormInputWithoutLabel -->
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'wert3', value, row)"
+                    *ngIf="editing[row.$$index + '-wert3']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
 
-            <ngx-datatable-column name="wert4" width="200">
-              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+              <ngx-datatable-column name="wert4" width="200">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                <span
                  title="Double click to edit"
                  (dblclick)="editing[row.$$index + '-wert4'] = true"
                  *ngIf="!editing[row.$$index + '-wert4']">
               {{value}}
             </span>
-                <!--suppress HtmlFormInputWithoutLabel -->
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'wert4', value, row)"
-                  *ngIf="editing[row.$$index + '-wert4']"
-                  type="text"
-                  [value]="value"
-                />
-              </ng-template>
-            </ngx-datatable-column>
-
-
-            <ngx-datatable-column name="wert5" width="200">
-              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                  <!--suppress HtmlFormInputWithoutLabel -->
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'wert4', value, row)"
+                    *ngIf="editing[row.$$index + '-wert4']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="wert5" width="200">
+                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                <span
                  title="Double click to edit"
                  (dblclick)="editing[row.$$index + '-wert5'] = true"
                  *ngIf="!editing[row.$$index + '-wert5']">
               {{value}}
             </span>
-                <!--suppress HtmlFormInputWithoutLabel -->
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'wert5', value, row)"
-                  *ngIf="editing[row.$$index + '-wert5']"
-                  type="text"
-                  [value]="value"
-                />
-              </ng-template>
-            </ngx-datatable-column>
+                  <!--suppress HtmlFormInputWithoutLabel -->
+                  <input
+                    autofocus
+                    (blur)="updateValue($event, 'wert5', value, row)"
+                    *ngIf="editing[row.$$index + '-wert5']"
+                    type="text"
+                    [value]="value"
+                  />
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
 
-
-          </ngx-datatable>
         </div>
-        <div class="clearfix"></div>
-        <hr>
-      </div>
-      <div class="col-md-6">
-        <custom-dual-list [format]="format" [source]="source" [(destination)]="confirmed"></custom-dual-list>
+        <div class="col-md-6">
+          <custom-dual-list [format]="format" [source]="source" [(destination)]="confirmed"></custom-dual-list>
+        </div>
       </div>
 
-
+      <div class="clearfix"></div>
       <hr>
+
       <button type="submit" class="btn btn-danger">Submit</button>
     </form>
 
