@@ -40,7 +40,6 @@ export class AnalysisComponent implements OnInit {
   ];
   private confirmed: any = [];
   private finalFormData = [];
-
   public analysisForm = this.formBuilder.group({
     name: ['', Validators.required],
     datasource: ['', Validators.required],
