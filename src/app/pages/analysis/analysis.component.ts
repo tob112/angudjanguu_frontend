@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Restangular } from 'ngx-restangular';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { Vector } from './vector.interface';
+import { Analysis } from './analysis.interface';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class AnalysisComponent implements OnInit {
 
 
   public editing = {};
-  public rows: Vector[] = [{ name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asdasd' }];
+  public rows: Vector[] = [{name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asdasd'}];
+  private analysis: Analysis;
   public format = {
     add: 'add Messgröße',
     remove: 'remove Messgröße',
@@ -36,12 +38,12 @@ export class AnalysisComponent implements OnInit {
       '_name': 'CAWT [ms]',
     },
   ];
-  public confirmed = [];
+  private confirmed: any = [];
   private finalFormData = [];
 
   public analysisForm = this.formBuilder.group({
-    analysisName: ['', Validators.required],
-    dataSource: ['', Validators.required],
+    name: ['', Validators.required],
+    datasource: ['', Validators.required],
     frequency: ['', Validators.required],
     placeholder1: ['', Validators.required],
     placeholder2: ['', Validators.required],
@@ -57,13 +59,21 @@ export class AnalysisComponent implements OnInit {
 
   saveAnalysis(): void {
 
-    this.finalFormData.splice(0, this.finalFormData.length);
 
-    this.finalFormData.push(this.analysisForm.value);
-    this.finalFormData.push(this.rows);
-    this.finalFormData.push(this.confirmed);
+    this.analysis = {
+      name: this.analysisForm.controls.name.value,
+      frequency: this.analysisForm.controls.frequency.value,
+      datasource: this.analysisForm.controls.datasource.value,
+      placeholder1: this.analysisForm.controls.placeholder1.value,
+      placeholder2: this.analysisForm.controls.placeholder2.value,
+      placeholder3: this.analysisForm.controls.placeholder3.value,
+      vectors: this.rows,
+      messgroesen: this.confirmed,
+    };
 
-    console.log(this.finalFormData);
+
+    console.log(this.analysis)
+
 
   }
 
@@ -82,7 +92,7 @@ export class AnalysisComponent implements OnInit {
   }
 
   public addVector(): void {
-    this.rows.push({ name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asd' });
+    this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asd'});
 
   }
 
