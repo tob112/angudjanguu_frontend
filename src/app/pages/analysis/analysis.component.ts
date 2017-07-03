@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Restangular } from 'ngx-restangular';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-
-
 import { Vector } from './vector.interface';
 
 
@@ -16,7 +14,7 @@ export class AnalysisComponent implements OnInit {
 
 
   public editing = {};
-  public rows: Vector[] = [{name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asdasd'}];
+  public rows: Vector[] = [{ name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asdasd' }];
   public format = {
     add: 'add Messgröße',
     remove: 'remove Messgröße',
@@ -59,28 +57,15 @@ export class AnalysisComponent implements OnInit {
 
   saveAnalysis(): void {
 
-    // for (const row of this.rows){
-    //   console.log(row);
-    //
-    // }
-
+    this.finalFormData.splice(0, this.finalFormData.length);
 
     this.finalFormData.push(this.analysisForm.value);
     this.finalFormData.push(this.rows);
+    this.finalFormData.push(this.confirmed);
 
     console.log(this.finalFormData);
 
   }
-
-  // ngOnInit(f) {
-  //
-  //   // for (let column in this.rows[0]) {
-  //   //   this.rows.push(column)
-  //   // }
-  //
-
-  //
-  // }
 
 
   public updateValue(event, cell, cellValue, row): void {
@@ -90,14 +75,14 @@ export class AnalysisComponent implements OnInit {
 
 
   public removeVector(row: any) {
-
-    this.rows.splice(row.$$index, 1);
+    if (window.confirm('Remove Vector?')) {
+      this.rows.splice(row.$$index, 1);
+    }
 
   }
 
-
   public addVector(): void {
-    this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asd'});
+    this.rows.push({ name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asd' });
 
   }
 

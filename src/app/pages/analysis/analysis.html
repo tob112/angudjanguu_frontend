@@ -1,13 +1,12 @@
 <div class="col-md-12">
   <ba-card title="Neue Analyse" baCardClass="with-scroll">
-    <form (submit)="saveAnalysis()">
-
+    <form [formGroup]="analysisForm" (submit)="saveAnalysis($event)">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
             <label for="analysisName" class="col-sm-2 form-control-label">Name1</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="analysisName" placeholder="">
+              <input type="text" formControlName="analysisName" class="form-control" id="analysisName" placeholder="">
             </div>
           </div>
         </div>
@@ -15,7 +14,7 @@
           <div class="form-group">
             <label for="frequency" class="col-sm-2 form-control-label">Frequenz1</label>
             <div class="col-sm-10">
-              <input type="number" max="60" min="0" class="form-control" id="frequency" placeholder="minutes">
+              <input type="number" formControlName="frequency" max="60" min="0" class="form-control" id="frequency" placeholder="minutes">
             </div>
           </div>
         </div>
@@ -23,7 +22,7 @@
           <div class="form-group">
             <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle1</label>
             <div class="col-sm-10">
-              <select class="form-control" id="datasrouce">
+              <select class="form-control" id="datasrouce" formControlName="dataSource">
                 <option>CDRS</option>
                 <option>Statistikdaten</option>
               </select>
@@ -31,31 +30,30 @@
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <label for="dfgsdg" class="col-sm-2 form-control-label">Name</label>
+            <label for="dfgsdg" class="col-sm-2 form-control-label">Platzhalter1</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="dfgsdg" placeholder="">
+              <input type="text" class="form-control" id="dfgsdg" formControlName="placeholder1" placeholder="">
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label for="asdasdf" class="col-sm-2 form-control-label">Frequenz</label>
+            <label for="asdasdf" class="col-sm-2 form-control-label">Platzhalter2</label>
             <div class="col-sm-10">
-              <input type="number" max="60" min="0" class="form-control" id="asdasdf" placeholder="minutes">
+              <input type="number"  max="60" min="0" formControlName="placeholder2"class="form-control" id="asdasdf" placeholder="minutes">
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label for="asd" class="col-sm-2 form-control-label">Datenquelle</label>
+            <label for="asd" class="col-sm-2 form-control-label">Platzhalter3</label>
             <div class="col-sm-10">
-              <select class="form-control" id="asd">
-                <option>CDRS</option>
-                <option>Statistikdaten</option>
+              <select class="form-control" id="asd" formControlName="placeholder1">
+                <option>Blub</option>
+                <option>Blab</option>
               </select>
             </div>
           </div>
