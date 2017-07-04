@@ -3,6 +3,7 @@ import { Restangular } from 'ngx-restangular';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { Vector } from './vector.interface';
 import { Analysis } from './analysis.interface';
+import { Observable } from "rxjs/Observable";
 
 
 @Component({
@@ -24,22 +25,10 @@ export class AnalysisComponent implements OnInit {
     none: 'None',
     direction: 'left-to-right',
   };
-  public source: any = [
-    {
-      '_id': 1,
-      '_name': 'ACT [ms]',
-    },
-    {
-      '_id': 2,
-      '_name': 'CST [ms]',
-    },
-    {
-      '_id': 3,
-      '_name': 'CAWT [ms]',
-    },
-  ];
-  private confirmed: any = [];
+
+
   private finalFormData = [];
+  private baseMessGroessen;
   public analysisForm = this.formBuilder.group({
     name: ['', Validators.required],
     datasource: ['', Validators.required],
@@ -49,11 +38,30 @@ export class AnalysisComponent implements OnInit {
     placeholder3: ['', Validators.required],
   });
 
-  constructor(private formBuilder: FormBuilder) {
+
+  public dualistSource: Array<any>;
+  public dualistConfirmed: Array<any> = [];
+  public dualistKey: string;
+  public dualistDisplay: string;
+
+  // private stations:Array<any> = [
+  //   { key: 1, station: 'Antonito', state: 'CO' }];
+
+  constructor(private formBuilder: FormBuilder, private restangular: Restangular) {
   }
 
 
   ngOnInit(): void {
+
+    this.baseMessGroessen = this.restangular.all('messgroessen');
+
+    this.baseMessGroessen.getList().subscribe(messGroessen => {
+      this.dualistKey = 'id';
+      this.dualistDisplay = 'name';
+      this.dualistSource = messGroessen;
+    });
+
+
   }
 
   saveAnalysis(): void {
@@ -67,12 +75,12 @@ export class AnalysisComponent implements OnInit {
       placeholder2: this.analysisForm.controls.placeholder2.value,
       placeholder3: this.analysisForm.controls.placeholder3.value,
       vectors: this.rows,
-      messgroesen: this.confirmed,
+      messgroesen: this.dualistConfirmed,
     };
 
-
-    console.log(this.analysis)
-
+    //
+    // console.log(this.analysis)
+    //
 
   }
 

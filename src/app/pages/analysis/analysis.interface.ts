@@ -13,7 +13,7 @@ export interface Analysis {
   placeholder2: number;
   placeholder3: string;
   vectors: Vector[],
-  messgroesen: [any],
+  messgroesen: Array<any>,
 
 
 }
