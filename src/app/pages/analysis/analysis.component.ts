@@ -16,7 +16,7 @@ export class AnalysisComponent implements OnInit {
 
 
   public editing = {};
-  public rows: Vector[] = [{name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asdasd'}];
+  public rows: Vector[] = [{timesliceStart: 0, timesliceEnd: 72000}];
   private analysis: Analysis;
   public format = {
     add: 'add Messgröße',
@@ -25,19 +25,13 @@ export class AnalysisComponent implements OnInit {
     none: 'None',
     direction: 'left-to-right',
   };
-
-
   private finalFormData = [];
   private baseMessGroessen;
   public analysisForm = this.formBuilder.group({
     name: ['', Validators.required],
     datasource: ['', Validators.required],
-    frequency: ['', Validators.required],
-    placeholder1: ['', Validators.required],
-    placeholder2: ['', Validators.required],
-    placeholder3: ['', Validators.required],
+    description: ['', Validators.required],
   });
-
 
   public dualistSource: Array<any>;
   public dualistConfirmed: Array<any> = [];
@@ -67,16 +61,16 @@ export class AnalysisComponent implements OnInit {
   saveAnalysis(): void {
 
 
-    this.analysis = {
-      name: this.analysisForm.controls.name.value,
-      frequency: this.analysisForm.controls.frequency.value,
-      datasource: this.analysisForm.controls.datasource.value,
-      placeholder1: this.analysisForm.controls.placeholder1.value,
-      placeholder2: this.analysisForm.controls.placeholder2.value,
-      placeholder3: this.analysisForm.controls.placeholder3.value,
-      vectors: this.rows,
-      messgroesen: this.dualistConfirmed,
-    };
+    // this.analysis = {
+    //   name: this.analysisForm.controls.name.value,
+    //   frequency: this.analysisForm.controls.description.value,
+    //   datasource: this.analysisForm.controls.datasource.value,
+    //   placeholder1: this.analysisForm.controls.placeholder1.value,
+    //   placeholder2: this.analysisForm.controls.placeholder2.value,
+    //   placeholder3: this.analysisForm.controls.placeholder3.value,
+    //   vectors: this.rows,
+    //   messgroesen: this.dualistConfirmed,
+    // };
 
     //
     // console.log(this.analysis)
@@ -99,7 +93,7 @@ export class AnalysisComponent implements OnInit {
   }
 
   public addVector(): void {
-    this.rows.push({name: 'klaus', wert1: 3, wert2: 'asdasd', wert3: 3, wert4: 'asd', wert5: 'asd'});
+    this.rows.push({timesliceStart: 0, timesliceEnd: 72000});
 
   }
 

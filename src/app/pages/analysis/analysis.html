@@ -1,27 +1,24 @@
 <div class="col-md-12">
   <ba-card title="Neue Analyse" baCardClass="with-scroll">
     <form [formGroup]="analysisForm" (submit)="saveAnalysis($event)">
-      <div class="row">
-        <div class="col-md-4">
+      <div class=" form-group row">
+        <div class="col-md-6">
           <div class="form-group">
-            <label for="name" class="col-sm-2 form-control-label">Name1</label>
+            <label for="name" class="col-sm-2 form-control-label">Name</label>
             <div class="col-sm-10">
               <input type="text" formControlName="name" class="form-control" id="name" placeholder="">
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
+
           <div class="form-group">
-            <label for="frequency" class="col-sm-2 form-control-label">Frequenz1</label>
+            <label for="description" class="col-sm-2 form-control-label">Frequenz</label>
             <div class="col-sm-10">
-              <input type="number" formControlName="frequency" max="60" min="0" class="form-control" id="frequency"
+              <input type="number" formControlName="description" max="60" min="0" class="form-control" id="description"
                      placeholder="minutes">
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
           <div class="form-group">
-            <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle1</label>
+            <label for="datasrouce" class="col-sm-2 form-control-label">Datenquelle</label>
             <div class="col-sm-10">
               <select class="form-control" id="datasrouce" formControlName="datasource">
                 <option>CDRS</option>
@@ -30,98 +27,64 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="dfgsdg" class="col-sm-2 form-control-label">Platzhalter1</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="dfgsdg" formControlName="placeholder1" placeholder="">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="asdasdf" class="col-sm-2 form-control-label">Platzhalter2</label>
-            <div class="col-sm-10">
-              <input type="number" max="60" min="0" formControlName="placeholder2" class="form-control" id="asdasdf"
-                     placeholder="minutes">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="asd" class="col-sm-2 form-control-label">Platzhalter3</label>
-            <div class="col-sm-10">
-              <select class="form-control" id="asd" formControlName="placeholder3">
-                <option>Blub</option>
-                <option>Blab</option>
-              </select>
-            </div>
-          </div>
-        </div>
 
-
-      </div>
-      <hr>
-      <div class="row">
         <div class="col-md-6">
-
           <button type="button" (click)="addVector()" class="btn btn-default">add Vector</button>
           <br>
           <br>
           <div class="col-md-11">
+
             <ngx-datatable
               class="material"
               [rows]='rows'
               [rowHeight]="'auto'"
               [columnMode]="'force'"
               [headerHeight]="30">
-              <ngx-datatable-column name="" width="1">
+              <ngx-datatable-column name="">
                 <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
                   <i class="ion-close" (click)="removeVector(row)">
                   </i>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="index" width="100">
+              <ngx-datatable-column name="index">
                 <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                   {{ row.$$index + 1 }}
                 </ng-template>
               </ngx-datatable-column>
 
 
-              <ngx-datatable-column name="name" width="200">
+              <ngx-datatable-column name="timesliceStart">
                 <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                <span
                  title="Double click to edit"
-                 (dblclick)="editing[row.$$index + '-name'] = true"
-                 *ngIf="!editing[row.$$index + '-name']">
+                 (dblclick)="editing[row.$$index + '-timesliceStart'] = true"
+                 *ngIf="!editing[row.$$index + '-timesliceStart']">
               {{value}}
             </span>
                   <!--suppress HtmlFormInputWithoutLabel -->
                   <input
                     autofocus
-                    (blur)="updateValue($event, 'name', value, row)"
-                    *ngIf="editing[row.$$index + '-name']"
+                    (blur)="updateValue($event, 'timesliceStart', value, row)"
+                    *ngIf="editing[row.$$index + '-timesliceStart']"
                     type="text"
                     [value]="value"
                   />
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="wert1" width="200">
+              <ngx-datatable-column name="timesliceEnd" width="200">
                 <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
                  <span
                    title="Double click to edit"
-                   (dblclick)="editing[row.$$index + '-wert1'] = true"
-                   *ngIf="!editing[row.$$index + '-wert1']">
+                   (dblclick)="editing[row.$$index + '-timesliceEnd'] = true"
+                   *ngIf="!editing[row.$$index + '-timesliceEnd']">
               {{value}}
             </span>
                   <!--suppress HtmlFormInputWithoutLabel -->
                   <input
                     autofocus
-                    (blur)="updateValue($event, 'wert1', value, row)"
-                    *ngIf="editing[row.$$index + '-wert1']"
+                    (blur)="updateValue($event, 'timesliceEnd', value, row)"
+                    *ngIf="editing[row.$$index + '-timesliceEnd']"
                     type="text"
                     [value]="value"
                   />
@@ -129,87 +92,28 @@
 
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="wert2" width="200">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-               <span
-                 title="Double click to edit"
-                 (dblclick)="editing[row.$$index + '-wert2'] = true"
-                 *ngIf="!editing[row.$$index + '-wert2']">
-              {{value}}
-            </span>
-                  <!--suppress HtmlFormInputWithoutLabel -->
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'wert2', value, row)"
-                    *ngIf="editing[row.$$index + '-wert2']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
 
-
-              <ngx-datatable-column name="wert3" width="200">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-               <span
-                 title="Double click to edit"
-                 (dblclick)="editing[row.$$index + '-wert3'] = true"
-                 *ngIf="!editing[row.$$index + '-wert3']">
-              {{value}}
-            </span>
-                  <!--suppress HtmlFormInputWithoutLabel -->
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'wert3', value, row)"
-                    *ngIf="editing[row.$$index + '-wert3']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
-
-              <ngx-datatable-column name="wert4" width="200">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-               <span
-                 title="Double click to edit"
-                 (dblclick)="editing[row.$$index + '-wert4'] = true"
-                 *ngIf="!editing[row.$$index + '-wert4']">
-              {{value}}
-            </span>
-                  <!--suppress HtmlFormInputWithoutLabel -->
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'wert4', value, row)"
-                    *ngIf="editing[row.$$index + '-wert4']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="wert5" width="200">
-                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-               <span
-                 title="Double click to edit"
-                 (dblclick)="editing[row.$$index + '-wert5'] = true"
-                 *ngIf="!editing[row.$$index + '-wert5']">
-              {{value}}
-            </span>
-                  <!--suppress HtmlFormInputWithoutLabel -->
-                  <input
-                    autofocus
-                    (blur)="updateValue($event, 'wert5', value, row)"
-                    *ngIf="editing[row.$$index + '-wert5']"
-                    type="text"
-                    [value]="value"
-                  />
-                </ng-template>
-              </ngx-datatable-column>
             </ngx-datatable>
           </div>
 
         </div>
+
+
+      </div>
+
+      <hr>
+      <div class="row">
+
         <div class="col-md-6">
-          <custom-dual-list [format]="format" [key]="dualistKey" [display]="dualistDisplay" [source]="dualistSource" [(destination)]="dualistConfirmed"></custom-dual-list>
+          <custom-dual-list [format]="format" [key]="dualistKey" [display]="dualistDisplay" [source]="dualistSource"
+                            [(destination)]="dualistConfirmed"></custom-dual-list>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="comment">Filter:</label>
+            <textarea class="form-control" rows="5" id="filter" title=""></textarea>
+          </div>
         </div>
       </div>
 
