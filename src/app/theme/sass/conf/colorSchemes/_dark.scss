@@ -16,28 +16,28 @@ $dropdown-text: #7d7d7d; // dropdown text color
 
 // sidebar colors
 $sidebar: #282828;
-$sidebar-text: #ffffff;
+$sidebar-text: white;
 
 // specific components colors
-$mail-box: whitesmoke;
-$auth-panel-background: #ffffff;
+$mail-box: red;
+$auth-panel-background: red;
 $progress-background: rgba(0, 0, 0, 0.15);
 $progress-default: rgba($default-text, 0.95);
 
 // bootstrap card panel styles
 $bootstrap-panel-radius: 7px;
-$bootstrap-panel-text: #ffffff;
+$bootstrap-panel-text: red;
 $bootstrap-panel-bg: rgba(255, 255, 255, 0.1);
 $bootstrap-panel-header-bg: transparent;
 $bootstrap-panel-header-border: 1px solid $border-light;
 $bootstrap-panel-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
 
 // color scheme
-$primary: #00abff !default;
-$info: #40daf1 !default;
-$success: #8bd22f !default;
-$warning: #e7ba08 !default;
-$danger: #f95372 !default;
+$primary: #209e91;
+$info: red;
+$success: #90b900;
+$warning: #dfb81c;
+$danger: #e85656;
 
 $primary-light: tint($primary, 30%);
 $info-light: tint($info, 30%);
@@ -63,9 +63,9 @@ $hoverlink: darken($activelink, 20%);
 
 // main background
 @mixin body-bg() {
-  background-color: $body-bg;
+  background-color: #636363;
 
-  $mainBgUrl: $assets-root + $images-root + 'sky-bg.jpg';
+  //$mainBgUrl: $assets-root + $images-root + 'sky-bg.jpg';
 
   &::before {
     content: '';
@@ -74,7 +74,7 @@ $hoverlink: darken($activelink, 20%);
     height: 100%;
     top: 0;
     left: 0;
-    background: url($mainBgUrl) no-repeat center center;
+    //background: url($mainBgUrl) no-repeat center center;
     background-size: cover;
     will-change: transform;
     z-index: 0;
@@ -85,3 +85,5 @@ $hoverlink: darken($activelink, 20%);
 @mixin additional-bg() {
   //display: block; // additional background layer, hidden by default
 }
+
+
