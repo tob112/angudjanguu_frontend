@@ -25,17 +25,6 @@ export const PAGES_MENU = [
             order: 9998,
           },
         },
-      },{
-        path: 'analysis',
-        data: {
-          menu: {
-            title: 'Analyse erstellen',
-            icon: 'ion-stats-bars',
-            selected: false,
-            expanded: false,
-            order: 9999,
-          },
-        },
       },
       // {
       //   path: 'editors',
