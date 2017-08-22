@@ -10,18 +10,19 @@ export class BaThemeConfig {
   }
 
   config() {
-    this._baConfig.changeTheme({name: 'dark'});
-
-    // let colorScheme = {
+    // this._baConfig.changeTheme({ name: 'my-theme' });
+    //
+    // const colorScheme = {
     //   primary: '#209e91',
     //   info: '#2dacd1',
     //   success: '#90b900',
     //   warning: '#dfb81c',
     //   danger: '#e85656',
     // };
+    //
     // this._baConfig.changeColors({
     //   default: '#4e4e55',
-    //   defaultText: '#e2e2e2',
+    //   defaultText: '#aaaaaa',
     //   border: '#dddddd',
     //   borderDark: '#aaaaaa',
     //
@@ -50,6 +51,11 @@ export class BaThemeConfig {
     //     gossip: '#b9f2a1',
     //     white: '#10c4b5',
     //   },
-    // })
+    //
+    //   custom: {
+    //     dashboardPieChart: colorHelper.hexToRgbA('#aaaaaa', 0.8),
+    //     dashboardLineChart: '#6eba8c',
+    //   },
+    // });
   }
 }
