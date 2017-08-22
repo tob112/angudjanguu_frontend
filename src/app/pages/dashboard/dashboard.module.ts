@@ -1,14 +1,14 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppTranslationModule } from '../../app.translation.module';
 import { NgaModule } from '../../theme/nga.module';
 
-import { Dashboard } from './dashboard.component';
+import { DashboardComponent } from './dashboard.component';
 import { routing } from './dashboard.routing';
 
 import { MatchesComponent } from './components/matches';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   imports: [
@@ -17,12 +17,15 @@ import { MatchesComponent } from './components/matches';
     AppTranslationModule,
     NgaModule,
     routing,
+    NgxDatatableModule,
   ],
   declarations: [
     MatchesComponent,
-    Dashboard,
+    DashboardComponent,
   ],
   providers: [],
 })
 export class DashboardModule {
+
+
 }

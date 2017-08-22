@@ -4,7 +4,7 @@
 
 import { Component } from '@angular/core';
 
-//sdf
+
 @Component({
   selector: 'matches',
   templateUrl: './matches.html',
@@ -12,7 +12,17 @@ import { Component } from '@angular/core';
 })
 export class MatchesComponent {
 
-  constructor() {
 
-  }
+  rows = [
+    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
+    { name: 'Dany', gender: 'Male', company: 'KFC' },
+    { name: 'Molly', gender: 'Female', company: 'Burger King' },
+  ];
+  columns = [
+    { prop: 'name' },
+    { name: 'Gender' },
+    { name: 'Company' },
+  ];
+
+
 }
