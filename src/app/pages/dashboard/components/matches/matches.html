@@ -1,6 +1,21 @@
-<div>
-  <ngx-datatable
-    [rows]="rows"
-    [columns]="columns">
-  </ngx-datatable>
-</div>
+<ngx-datatable
+  class="material fullscreen"
+  style=""
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="0"
+  [rowHeight]="50"
+  [scrollbarV]="true"
+  [scrollbarH]="true"
+  [rows]="rows">
+  <ngx-datatable-column name="Datum" [width]="80"></ngx-datatable-column>
+
+  <ngx-datatable-column name="VerteidigungA" [width]="120"></ngx-datatable-column>
+
+  <ngx-datatable-column name="AngriffA" [width]="120"></ngx-datatable-column>
+  <ngx-datatable-column name="" [width]="20">:</ngx-datatable-column>
+  <ngx-datatable-column name="AngriffB" [width]="120" ></ngx-datatable-column>
+  <ngx-datatable-column name="VerteidigungB" [width]="120" ></ngx-datatable-column>
+  <ngx-datatable-column name="Ergebnis" [width]="120" ></ngx-datatable-column>
+</ngx-datatable>
+
