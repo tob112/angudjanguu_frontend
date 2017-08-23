@@ -114,7 +114,7 @@ export class MatchesComponent {
       'verteidigungB': 'ag',
       'angriffB': 'asg',
       'ergebnis': '34:0',
-    },{
+    }, {
       'datum': '22.12.2017',
       'verteidigungA': 'asd',
       'angriffA': 'asf',
@@ -124,9 +124,9 @@ export class MatchesComponent {
     },
   ];
   columns = [
-    {prop: 'datum'},
-    {name: 'Verteidigung'},
-    {name: 'Company'},
+    { prop: 'datum' },
+    { name: 'Verteidigung' },
+    { name: 'Company' },
   ];
 
 
