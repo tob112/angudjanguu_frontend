@@ -14,13 +14,32 @@ export class MatchesComponent {
 
 
   rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
+    {
+      'datum': '22.08.2017',
+      'verteidigungA': 'Alex',
+      'angriffA': 'Tobi',
+      'verteidigungB': 'Christian',
+      'angriffB': 'Stefan',
+      'ergebnis': '3:0',
+    }, {
+      'datum': '22.08.2017',
+      'verteidigungA': 'Alex',
+      'angriffA': 'Tobi',
+      'verteidigungB': 'Christian',
+      'angriffB': 'Stefan',
+      'ergebnis': '3:0',
+    }, {
+      'datum': '22.08.2017',
+      'verteidigungA': 'asd',
+      'angriffA': 'asf',
+      'verteidigungB': 'ag',
+      'angriffB': 'asg',
+      'ergebnis': '34:0',
+    },
   ];
   columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
+    { prop: 'datum' },
+    { name: 'Verteidigung' },
     { name: 'Company' },
   ];
 
