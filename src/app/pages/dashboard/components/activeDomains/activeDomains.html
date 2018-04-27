@@ -1,0 +1,45 @@
+<ngx-datatable
+  class="material"
+  style=""
+  [rows]="activeDomainsDisplayed"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [rowHeight]="50"
+  [limit]="14"
+  [footerHeight]="40">
+  <ngx-datatable-column name="Domain" [width]="100">
+    <ngx-datatable-row-detail>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <div class="align-center"> {{value}}</div>
+      </ng-template>
+    </ngx-datatable-row-detail>
+  </ngx-datatable-column>
+
+  <!--<ngx-datatable-column name="Team1" [width]="80">-->
+    <!--<ngx-datatable-row-detail>-->
+      <!--<ng-template let-row="row" let-value="value" ngx-datatable-cell-template>-->
+        <!--<div class="align-center"> {{value}}</div>-->
+      <!--</ng-template>-->
+    <!--</ngx-datatable-row-detail>-->
+  <!--</ngx-datatable-column>-->
+  <!--<ngx-datatable-column name="" [width]="20">-->
+    <!--<ng-template ngx-datatable-cell-template let-value="value" let-row="row">-->
+      <!--<div class="align-center">vs</div>-->
+    <!--</ng-template>-->
+  <!--</ngx-datatable-column>-->
+  <!--<ngx-datatable-column name="Team2" [width]="100">-->
+    <!--<ngx-datatable-row-detail>-->
+      <!--<ng-template let-row="row" let-value="value" ngx-datatable-cell-template>-->
+        <!--<div class="align-center"> {{value}}</div>-->
+      <!--</ng-template>-->
+    <!--</ngx-datatable-row-detail>-->
+  <!--</ngx-datatable-column>-->
+  <!--<ngx-datatable-column name="Ergebnis" [width]="100">-->
+    <!--<ngx-datatable-row-detail>-->
+      <!--<ng-template let-row="row" let-value="value" ngx-datatable-cell-template>-->
+        <!--<div class="align-center"> {{value}}</div>-->
+      <!--</ng-template>-->
+    <!--</ngx-datatable-row-detail>-->
+  <!--</ngx-datatable-column>-->
+</ngx-datatable>
+

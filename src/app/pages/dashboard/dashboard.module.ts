@@ -9,6 +9,8 @@ import { routing } from './dashboard.routing';
 
 import { MatchesComponent } from './components/matches';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ActiveDomainsComponent } from './components/activeDomains/activeDomains.component';
+import { ActiveDomainsService } from './components/activeDomains/activeDomainsService';
 
 @NgModule({
   imports: [
@@ -20,10 +22,13 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NgxDatatableModule,
   ],
   declarations: [
+    ActiveDomainsComponent,
     MatchesComponent,
     DashboardComponent,
   ],
-  providers: [],
+  providers: [
+    ActiveDomainsService
+  ],
 })
 export class DashboardModule {
 
